@@ -1,13 +1,32 @@
-\documentclass{beamer}
+\documentclass[10pt,aspectratio=169]{beamer}
+
 \usetheme{metropolis}           % Use metropolis theme
 \title{GFS Mathematik Lineare Algebra}
 \date{20. Januar 2023}
 \author{Valentin Zwerschke}
 \institute{Königin-Olga-Stift Gymnasium}
+
+\def\titlepage{%
+  \usebeamertemplate{title page}%<---
+}
+
+\usepackage[german]{babel} % German
+
 \begin{document}
   \maketitle
+
+  \begin{frame}{Gliederung}
+	\setbeamertemplate{section in toc}[sections numbered]
+	\tableofcontents[hideallsubsections]
+  \end{frame}
+
   \section{First Section}
   \begin{frame}{First Frame}
     Hello, world!
+  \end{frame}
+  
+  \section{Second Section}
+  \begin{frame}{Second Frame}
+    Hello, world 2!
   \end{frame}
 \end{document}

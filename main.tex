@@ -10,6 +10,8 @@
   \usebeamertemplate{title page}%<---
 }
 
+
+\usepackage{tikz}
 \usepackage[german]{babel} % German
 
 \begin{document}
@@ -22,17 +24,79 @@
   \end{frame}
 
   \section{Vektoren}
-  \subsection{Definition}
-  \begin{frame}{Definition}
+  \subsection{Vektoren}
+  \begin{frame}{Vektoren}
+    \begin{minipage}{0.65\textwidth}
+      \begin{itemize}
+        \item Punkte im Raum werden ueber Vektoren beschrieben 
+        \item Vektor Koordinaten $v_x$ und $v_y$ (Kartesischem Koordinaten System = Achsen Senkrecht)\\\vspace{0.2cm} 
+        \hspace{0.3cm}$\vec{v} = \begin{pmatrix} v_x\\ v_y\end{pmatrix}$
+        \vspace{0.2cm}
+        \item Laenge (euklidische Norm) bsp. 2D, 3D\\
+        \hspace{0.3cm}$||\vec{v}|| =  \sqrt{v_x^2 + v_y^2}$\\
+        \hspace{0.3cm}$||\vec{v}|| =  \sqrt{v_x^2 + v_y^2 + v_z^2}$
+        \vspace{0.2cm}
+        \item Richtung/Normierter Vektor\\
+        \hspace{0.25cm}\Large$\frac{\vec{v}}{||\vec{v}||}$
+      \end{itemize}  
+    \end{minipage}
+    \begin{minipage}[c]{0.3\textwidth}
+      \begin{tikzpicture}
+        \draw[thick,->] (0,0) -- (3.5,0) node[anchor=north west] {x};
+        \draw[thick,->] (0,0) -- (0,2.5) node[anchor=south east] {y};
+        \draw[thick,->, blue] (0,0) -- node[above] {$\vec{v}$} (3,2) node[anchor=north east] {};
+        \draw[densely dotted]  (3,0) node[below] {$v_x$} -- (3,2);
+        \draw[densely dotted]  (0,2) node[left] {$v_y$} -- (3,2);
+        %\node [black] at (3,2) {\textbullet};
+      \end{tikzpicture}
+    \end{minipage}
   \end{frame}
 
+  \subsection{Rechnen mit Vektoren}
+  \begin{frame}{Rechnen mit Vektoren}
+    \vspace{0.2cm}
+    \begin{minipage}{6.5cm}
+      \textbf{Addition}
+      \begin{itemize}
+        \item Jeweils Summe der Koordinaten\\
+        \vspace{0.2cm}
+        \hspace{0.2cm}
+        $\vec{u} + \vec{v} = \begin{pmatrix}u_x + v_x\\ u_y + v_y\end{pmatrix}$
+        \vspace{-0.5cm}
+      \end{itemize}
+      \hspace{0.25cm}
+      \begin{tikzpicture}
+        \draw[thick,->] (0,0) -- (3.5,0) node[anchor=north west] {x};
+        \draw[thick,->] (0,0) -- (0,2.5) node[anchor=south east] {y};
 
-  \subsection{Laenge und Normierung}
-  \begin{frame}{Laenge und Normierung}
-  \end{frame}
+        \draw[thick,->, blue] (0,0) -- node[above] {$\vec{u}$} (3,1);
+        \draw[thick,->, blue] (3,1) -- node[above] {$\vec{v}$} (1.5,2);
+        \draw[thick,->, red]   (0,0) -- node[above] {\hspace{1.4cm}\small$\vec{u} + \vec{v}$} (1.5,2);
+      \end{tikzpicture}
+    \end{minipage}
+    \begin{minipage}{6.5cm}
+      \textbf{Subtraktion}
+      \begin{itemize}
+        \item Jeweils Differenz der Koordinaten\\
+        \vspace{0.2cm}
+        \hspace{0.2cm}
+        $\vec{v} - \vec{u} = \begin{pmatrix}v_x - u_x\\ v_y - u_y\end{pmatrix}$
+        \vspace{-0.5cm}
+      \end{itemize}
+      \hspace{0.25cm}
+      \begin{tikzpicture}
+        \draw[thick,->] (0,0) -- (3.5,0) node[anchor=north west] {x};
+        \draw[thick,->] (0,0) -- (0,2.5) node[anchor=south east] {y};
 
-  \subsection{Vektor Addition und Subtraktion}
-  \begin{frame}{Vektor Addition und Subtraktion}
+        \draw[thick,->, blue] (0,0) -- node[above] {$\vec{u}$} (3,1);
+        \draw[thick,->, red] (3,1) -- node[above] {\hspace{0.5cm}\small$\vec{v} - \vec{u}$} (1.5,2);
+        \draw[thick,->, blue]   (0,0) -- node[above] {$\vec{v}$} (1.5,2);
+      \end{tikzpicture}
+    \end{minipage}
+    \textbf{Skalierung}
+    \begin{center}
+      $\lambda \vec{v} = \begin{pmatrix}\lambda v_x\\ \lambda v_y\end{pmatrix}$
+    \end{center}
   \end{frame}
 
 

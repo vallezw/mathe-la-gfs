@@ -55,7 +55,7 @@
   \subsection{Rechnen mit Vektoren}
   \begin{frame}{Rechnen mit Vektoren}
     \vspace{0.2cm}
-    \begin{minipage}{6.5cm}
+    \begin{minipage}{7cm}
       \textbf{Addition}
       \begin{itemize}
         \item Jeweils Summe der Koordinaten\\
@@ -102,10 +102,65 @@
 
   \subsection{Skalarprodukt}
   \begin{frame}{Skalarprodukt}
+    \begin{minipage}{9cm}
+      \begin{itemize}
+        \item Abbildung zweier Vektoren auf einen Skalar (Zahl)
+        \item Skalarprodukt:\\
+        $\vec{u}\cdot\vec{v} = u_xv_x + u_yv_y$; im 2D\\
+        $\vec{u}\cdot\vec{v} = u_xv_x + u_yv_y + u_zv_z$; im 3D\\
+        \item Winkel zwischen $\vec{u}$ und $\vec{v}$:\\
+        \hspace{0.7cm}$\vec{u} \cdot \vec{v} = \cos(\phi)||\vec{u}||||\vec{v}||$
+        \item Orthogonlaitaet genau dann wenn:
+        \hspace{0.7cm}$\vec{v} \perp \vec{u} \Leftrightarrow \vec{u} \cdot \vec{v} = 0$
+        \item Orthogonale Vektoren zu $\vec{v}$:\\
+        \vspace{0.1cm}\hspace{0.7cm}$\lambda \small\begin{pmatrix}v_y\\ -v_x\end{pmatrix}$, \small mit $\lambda \neq 0$
+      \end{itemize}
+    \end{minipage}
+    \begin{minipage}{4cm}
+      \textbf{Interpretation}\\
+      \footnotesize Produkt Laenge $\vec{u}$ mit Laenge Projektion von $\vec{v}$ auf $\vec{u}$ (hier: $s$)\\
+      \vspace{0.1cm}
+      \begin{tikzpicture}
+        \draw[thick,->] (0,0) -- (3.5,0) node[anchor=north west] {x};
+        \draw[thick,->] (0,0) -- (0,2.5) node[anchor=south east] {y};
+        \draw[thick,->] (0.5,0.5) -- node[above] {$\vec{v}$} (2,2);
+        \draw[thick,->] (0.5, 0.5) -- node[above] {$\vec{u}$} (3,0.5);
+        \draw[thick,<->, blue] (0.5, 0.35) -- node[below] {$s$} (2,0.35);
+        \draw[densely dotted]  (2,0.5) -- (2,2);
+        
+      \end{tikzpicture}
+    \end{minipage}
   \end{frame}
 
   \subsection{Kreuzprodukt}
   \begin{frame}{Kreuzprodukt}
+    \begin{minipage}{10cm}
+      \begin{itemize}
+        \item Abbildung zweier Vektoren $\vec{u}$ und $\vec{v}$ im 3D Raum auf einen Vektor $\vec{w}$\\\vspace{0.25cm}
+        \hspace{0.3cm}$\vec{w} = \vec{u} \times \vec{v} = \begin{pmatrix}u_x\\ u_y\\u_z\end{pmatrix} \times \begin{pmatrix}v_x\\v_y\\v_z\end{pmatrix} = \begin{pmatrix}u_yv_z - u_zv_y\\u_zv_x - u_xv_z\\u_xv_y - u_yv_x\end{pmatrix}$ 
+        \vspace{0.25cm}
+        \item Eigenschaften:
+        \begin{itemize}
+          \item $\vec{w} \perp \vec{u}$ \hspace{0.1cm}$\wedge$\hspace{0.1cm} $\vec{w} \perp \vec{v}$ ("Rechte Hand Regel")
+          \item $||\vec{w}|| = ||\vec{u}||||\vec{v}||\sin(\phi)$, mit $\phi$ Winkel zwischen $\vec{u}$ und $\vec{v}$\\
+          Entspricht der Flaeche, des von $\vec{u}$ und $\vec{v}$ aufgespannten Parallelogramms
+        \end{itemize}
+      \end{itemize}  
+    \end{minipage}
+    \begin{minipage}{3cm}
+      \begin{tikzpicture}
+        \draw[thick,->] (0,0) -- (3.5,0) node[anchor=north west] {x};
+        \draw[thick,->] (0,0) -- (0,2.5) node[anchor=south east] {y};
+
+        \draw[thick,->, blue] (0.5,1) -- node[above] {$\vec{v}$} (1.5,2);
+        \draw[thick,->, blue] (0.5,1) -- node[below] {$\vec{u}$} (2.5,0.5);
+        
+        \draw[thick, magenta] (1.5,2) -- (3.5,1.5);
+        \draw[thick, magenta] (2.5,0.5) -- (3.5,1.5);
+
+        \node [black] at (2,1.25) {\small$||\vec{u} \times \vec{v}||$};
+      \end{tikzpicture}
+    \end{minipage}
   \end{frame}
 
   \section{Polygone Netze}

@@ -10,6 +10,7 @@
   \usebeamertemplate{title page}%<---
 }
 
+\graphicspath{ {./images/} }
 
 \usepackage{tikz}
 \usepackage[german]{babel} % German
@@ -163,13 +164,48 @@
     \end{minipage}
   \end{frame}
 
-  \section{Polygone Netze}
+  \section{Polygonale Netze}
   \subsection{Vertex, Kante, Facette, Oberflaeche}
   \begin{frame}{Vertex, Kante, Facette, Oberflaeche}
+    \hspace{0.65cm}\includegraphics[scale=0.5]{mesh}
+    \begin{center}
+      \footnotesize \url{https://commons.wikimedia.org/wiki/File:Mesh_overview.svg}  
+    \end{center}
   \end{frame}
 
-  \subsection{Flaechennormale und Orientierung}
-  \begin{frame}{Flaechennormale und Orientierung}
+  \subsection{Beispiel einer Oberflaeche}
+  \begin{frame}{Beispiel einer Oberflaeche}
+    \begin{center}
+      \includegraphics[scale=0.125]{bunny}
+    \end{center}
+    \textbf{Fragestellung der Computergrafik:}\\
+    Abbildung der 3D Oberflaeche auf die 2D Bildebene der Kamera\\
+    (Kameraperspektive, Schattierung, ... )
+  \end{frame}
+
+
+  \subsection{Flaechennormale}
+  \begin{frame}{Flaechennormale}
+    \begin{minipage}{8cm}
+      \normalsize
+      \textbf{Der Normalenvektor zu einer Facette:}
+      \begin{itemize}
+        \item Senkrecht zur Facette mit Laenge 1
+        \item Wichtig, z.B. fuer Schattierungsberechnung
+        \item Berechnung aus der Ortsvektoren, $\vec{a}, \vec{b}, \vec{c}$ der Vertices
+        \item Kreuzprodukt der Richtungsvektoren $\vec{u}$ und $\vec{v}$
+      \end{itemize}
+      
+      \vspace{0.2cm}
+      \hspace{0.3cm}
+      \large $\vec{n} = \frac{\vec{u} \times \vec{v}}{||\vec{u} \times \vec{v}||} = \frac{(\vec{b} - \vec{a}) \times (\vec{c} - \vec{a})}{||(\vec{b} - \vec{a}) \times (\vec{c} - \vec{a})||}$  
+    
+      
+    \end{minipage}
+    \begin{minipage}{4cm}
+      \includegraphics[scale=0.125]{sketch_n_vec}  
+    \end{minipage}
+   
   \end{frame}
 
 

@@ -259,8 +259,8 @@
     \begin{minipage}{9cm}
       \textbf{Matrizen}
       \begin{itemize}
-        \item Rechteckige Anordung (Tabelle) von Zahlen
-        \item Beispiel $2 \times 3$ - Matrix (gespr. "2 kreuz 3")\\
+        \item Rechteckige Anordung (Tabelle) von Zahlen\\ $\rightarrow$ 2D in Zeilen/Spalten
+        \item Beispiel $2 \times 3$ - Matrix ("2 kreuz 3")
         \vspace{0.2cm}
         $A = \begin{pmatrix} a_{0,0} & a_{0,1} & a_{0,2}\\ a_{1,0} & a_{1,1} &  a_{1,2}\end{pmatrix}$
         \vspace{0.2cm}
@@ -377,8 +377,94 @@
 
   \section{Transformation}
 
-  \subsection{Affine Transformation: Skalierung und Rotation}
-  \begin{frame}{Affine Transformation: Skalierung und Rotation}
+  \subsection{Affine Transformation: Skalierung}
+  \begin{frame}{Affine Transformation: Skalierung}
+    \textbf{Transformationsmatrix fuer Skalierung}
+    \begin{center}
+      $T = \begin{pmatrix}
+        a & 0\\
+        0 & b
+      \end{pmatrix}$
+      \begin{itemize}
+        \item Skalierungswerte der Achens auf Hauptdiagonalen
+        \item Beispiel:
+        \begin{itemize}
+          \item Skalierung entlang x-Achse: 1
+          \item Skalerierung entlang der y-Achse: 2
+            \\\vspace{0.1cm}
+            $T_{1,2} = \begin{pmatrix}
+              1 & 0\\
+              0 & 2
+            \end{pmatrix}
+            $
+          \begin{center}
+            \includegraphics[scale=0.15]{skalierung}  
+          \end{center}
+          
+          
+        \end{itemize}
+      \end{itemize}
+    \end{center}
+  \end{frame}
+
+
+  \subsection{Affine Transformation: Rotation}
+  \begin{frame}{Affine Transformation: Rotation}
+      \begin{minipage}{9cm}
+        \textbf{Transformationsmatrix fuer Rotation}
+        \begin{center}
+          $R = \begin{pmatrix}
+            \cos\phi & -\sin\phi\\
+            \sin\phi & \cos\phi
+          \end{pmatrix}$
+          \begin{itemize}
+            \item Rotation um Urpsrung um den Winkel $\phi$ im 2D
+            \item Beispiel:
+            \begin{itemize}
+              \item Vektor $\vec{v} = \begin{pmatrix}
+                1\\0
+              \end{pmatrix}$\\\vspace{0.1cm}
+                $\vec{v}' = \begin{pmatrix}
+                  \cos\phi & -\sin\phi\\
+                  \sin\phi & \cos\phi
+                \end{pmatrix}\begin{pmatrix}
+                  1\\0
+                \end{pmatrix} = \begin{pmatrix}
+                  \cos\phi\\\sin\phi
+                \end{pmatrix}$  
+            \end{itemize}
+          \end{itemize}
+        \end{center}
+      \end{minipage}
+      \begin{minipage}{4cm}
+        \includegraphics[scale=0.1]{rotation}  
+      \end{minipage}
+  \end{frame}
+
+  \subsection{Affine Transformationen: 3D Rotation}
+  \begin{frame}{Affine Transformationen: 3D Rotation}
+    \begin{center}
+    \begin{itemize}
+      \item Um die x-Achse: \hspace{0.1cm}
+      $R_x = \begin{pmatrix}
+        1 & 0 & 0\\
+        0 & \cos\phi & -\sin\phi\\
+        0 & \sin\phi & \cos\phi
+      \end{pmatrix}$\vspace{0.5cm}
+      \item Um die y-Achse: \hspace{0.1cm}
+      $R_y = \begin{pmatrix}
+        \cos\phi & 0 & \sin\phi\\
+        0 & 1 & 0\\
+        -\sin\phi & 0 & \cos\phi
+      \end{pmatrix}$\vspace{0.5cm}
+      \item Um die z-Achse: \hspace{0.1cm}
+      $R_z = \begin{pmatrix}
+        \cos\phi & -\sin\phi & 0\\
+        \sin\phi & \cos\phi & 0\\
+        0 & 0 & 1
+      \end{pmatrix}$
+    \end{itemize}
+  \end{center}
   \end{frame}
 
   \subsection{Translation, homogene Koordinaten}

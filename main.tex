@@ -467,8 +467,80 @@
   \end{center}
   \end{frame}
 
-  \subsection{Translation, homogene Koordinaten}
-  \begin{frame}{Translation, homogene Koordinaten}
+  \subsection{Translation/Verschiebung}
+  \begin{frame}{Translation/Verschiebung}
+    \textbf{Verschiebung:}
+    $\vec{v}' = \vec{v} + \vec{t}$
+    \begin{itemize}
+      \item Anders als bei Skalierung/Rotation keine Transformationsmatrix
+      \item Keine Affine Transformation (Ursprung bleibt nicht unveraendert)
+      \item Transformation mit Trick moeglich: \textbf{Dimensionserhoehung} (w-Koordinate)
+    \end{itemize}
+    Vektoren: $\begin{pmatrix}
+      x\\y
+    \end{pmatrix}\rightarrow \begin{pmatrix}
+      x\\y\\1
+    \end{pmatrix}$ und $\begin{pmatrix}
+      x\\y\\z
+    \end{pmatrix}\rightarrow \begin{pmatrix}
+      x\\y\\z\\1
+    \end{pmatrix}$
+    \\
+    Matrizen: $\begin{pmatrix}
+      a & b\\
+      c & d
+    \end{pmatrix}
+    \rightarrow
+    \begin{pmatrix}
+      a & b & 0\\
+      c & d & 0\\
+      0 & 0 & 1
+    \end{pmatrix}
+    $
+  \end{frame}
+
+  \subsection{Homogene Verschiebungsmatrix}
+  \begin{frame}{Homogene Verschiebungsmatrix}
+    \begin{itemize}
+      \item Verschiebungsvektor: $\begin{pmatrix}
+        t_x\\t_y
+      \end{pmatrix}$
+      \item Homogene Verschiebungsmatrix: $\begin{pmatrix}
+        1 & 0 & t_x\\
+        0 & 1 & t_y\\
+        0 & 0 & 1
+      \end{pmatrix}$
+      \item Test:\\\vspace{0.2cm}
+      \begin{center}
+        $
+        \begin{pmatrix}
+          x\\y
+        \end{pmatrix} + 
+        \begin{pmatrix}
+          t_x\\t_y
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+          x + t_x\\
+          y + t_y
+        \end{pmatrix}
+        $\\\vspace{0.2cm}$
+        \begin{pmatrix}
+          1 & 0 & t_x\\
+          0 & 1 & t_y\\
+          0 & 0 & 1
+        \end{pmatrix}
+        \cdot \begin{pmatrix}
+          x\\y\\1
+        \end{pmatrix}
+        = \begin{pmatrix}
+          x + t_x\\
+          y + t_y\\
+          1
+        \end{pmatrix}
+        $
+      \end{center}
+    \end{itemize}
   \end{frame}
 
   \section{Anwendung auf Computer Grafik}
@@ -476,6 +548,56 @@
 
   \subsection{Perspektivische Projektion}
   \begin{frame}{Perspektivische Projektion}
+    \textbf{Perspektivische Projektion}
+    \begin{itemize}
+      \item Abbildung aus dem 3D-Raum auf die Bildebene
+    \end{itemize}
+    \begin{center}
+      \includegraphics[scale=0.65]{projektion}  
+    \end{center}
+  \end{frame}
+
+
+  \subsection{Perspektivische Projektion 2}
+  \begin{frame}{Perspektivische Projektion 2}
+    \textbf{Herleitung: Strahlensatz}\\
+    \includegraphics[scale=0.15]{strahlen}\\
+    \large$\frac{z}{z_0} = \frac{x}{x'} \rightarrow x'=\frac{x\cdot z_0}{z}$\small;mit $z_0$ als Abstand zur Bildebene\\
+    \normalsize
+    \begin{center}
+      $\begin{pmatrix}
+        x'\\
+        y'\\
+        z_0\\
+        1
+      \end{pmatrix}
+      =
+      \begin{pmatrix}
+        \frac{x\cdot z_0}{z}\\
+        \frac{y\cdot z_0}{z}\\
+        \frac{z\cdot z_0}{z}\\
+        \frac{z}{z}\\
+      \end{pmatrix}
+      =
+      \frac{1}{z}
+      \begin{pmatrix}
+        x\cdot z_0\\
+        y\cdot z_0\\
+        z\cdot z_0\\
+        z
+      \end{pmatrix}
+      = \frac{1}{z}
+      \begin{pmatrix}
+        z_0 & 0 & 0 & 0\\
+        0 & z_0 & 0 & 0\\
+        0 & 0 & z_0 & 0\\
+        0 & 0 & 1 & 0\\
+      \end{pmatrix}
+      \begin{pmatrix}
+        x\\y\\z\\1
+      \end{pmatrix}
+      $
+    \end{center}
   \end{frame}
 
 

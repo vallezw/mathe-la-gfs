@@ -20,16 +20,17 @@ jobs:
         uses: xu-cheng/latex-action@v2
         with:
           root_file: presentation.tex
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create release
+        uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          draft: false
-          prerelease: false
+          prerelease: true
+          body: |
+            This is a nightly release of mamba.
+          files: |
+            artifact.txt
+          repository: pavelzw/micromamba-nightlies
+          token: ${{ secrets.MICROMAMBA_NIGHTLIES_TOKEN }}
+          tag_name: 'sha-${{ github.sha }}'
       - name: Upload handout
         uses: actions/upload-release-asset@v1
         env:

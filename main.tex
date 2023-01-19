@@ -18,6 +18,8 @@
 \begin{document}
   \maketitle
 
+  \setbeamercolor{background canvas}{bg=white} % Set beamer color white bc of the white imgs
+
   \begin{frame}{Gliederung}
 	\setbeamertemplate{section in toc}[sections numbered]
 	\setbeamertemplate{subsection in toc}[subsections numbered]
@@ -284,6 +286,7 @@
 
   \subsection{Allgemeine Multiplatikation}
   \begin{frame}{Allgemeine Multiplatikation}
+    \textbf{Definition Matrix Mutliplikation}
     \begin{center}
       $C = A \cdot B$ \\
       $C_{i,j} = A_{i,*} \cdot B_{*,j}$\\
@@ -307,7 +310,8 @@
       \end{pmatrix} =
       \begin{pmatrix}
         14\\24
-      \end{pmatrix}$
+      \end{pmatrix}$\\
+      \includegraphics[scale=0.075]{matrix_mult}
     \end{center}
   \end{frame}
 
@@ -372,8 +376,6 @@
       
     \end{itemize}
   \end{frame}
-
-
 
   \section{Transformation}
 
@@ -603,10 +605,98 @@
 
   \subsection{Screen Mapping}
   \begin{frame}{Screen Mapping}
+    \textbf{Screen Mapping Matrix mit 3 Funktionen}
+    \begin{itemize}
+      \item Verschiebung des Bildes auf die Mitte der Anzeigegeraets
+      \item Skalierung entsprechender Brennweite $f$ der Kamera
+      \item Reduzierung des 4D-homogonene Koordinaten auf 2D $\begin{pmatrix}
+        x\\y
+      \end{pmatrix}$\\
+      $SM = \begin{pmatrix}
+        f & 0 & 0 & \frac{1}{2}h\\
+        0 & f & 0 & \frac{1}{2}b
+      \end{pmatrix}$ mit $h$ Hoehe und $b$ Breite des Ausgabegeraets
+      \begin{center}        
+        Bsp. Punkt $\vec{P}: \begin{pmatrix}
+          1\\2\\1\\1
+        \end{pmatrix}$ auf der Bildebene\\
+        $SM \cdot \vec{P} = \begin{pmatrix}
+          f & 0 & 0 & \frac{1}{2}h\\
+          0 & f & 0 & \frac{1}{2}b
+        \end{pmatrix}
+        \begin{pmatrix}
+          1\\2\\1\\1
+        \end{pmatrix}
+        = \begin{pmatrix}
+          f + \frac{1}{2}h\\
+          2f + \frac{1}{2}b
+        \end{pmatrix}$
+      \end{center}
+    \end{itemize}
   \end{frame}
 
-  \subsection{Abbildung eines Drehbaren Dreiecks im Raum}
-  \begin{frame}{Abbildung eines Drehbaren Dreiecks im Raum}
+  \subsection{Finales Anwendungsbeispiel}
+  \begin{frame}{Finales Anwendungsbeispiel}
+    \textbf{Aufgabenstellung:} Ausgabe der Sicht einer Kamera auf die Facette eines Objekts
+    \begin{itemize}
+      \item Facette aufgspannt im 3D-Raum durch Punkte: $P_1, P_2, P_3$
+      \item Ausgabe auf Monitor der Breite 4 und Hoehe 3
+      \item Bildebene $z_0 = 1$
+      \item Kamera Sicht entlang der z-Achse mit Brennweite $f=1.5$
+    \end{itemize}
+    \begin{center}
+      $P_1 = \begin{pmatrix}
+        2\\0\\2
+      \end{pmatrix}, P_2 = \begin{pmatrix}
+        0\\2\\4
+      \end{pmatrix},
+      P_3 = \begin{pmatrix}
+        1\\1\\3
+      \end{pmatrix}
+      $
+    \end{center}
+  \end{frame}
+
+  \subsection{Finales Anwendungsbeispiel: Rechnung}
+  \begin{frame}{Finales Anwendungsbeispiel: Rechnung}
+    
+      \textbf{Einsetzen der Punkte:}\\
+      $\vec{P}_{M, 1} = SM \cdot P_{proj} \cdot \vec{P}_1$$= \begin{pmatrix}
+        f & 0 & 0 & 2\\
+        0 & f & 0 & 1.5
+      \end{pmatrix}
+      \frac{1}{z_1}
+      \begin{pmatrix}
+        z_0 & 0 & 0 & 0\\
+        0 & z_0 & 0 & 0\\
+        0 & 0 & z_0 & 0\\
+        0 & 0 & 1 & 0
+      \end{pmatrix}
+      \begin{pmatrix}
+        2\\0\\2\\1
+      \end{pmatrix}
+      =
+      \begin{pmatrix}
+        f & 0 & 0 & 2\\
+        0 & f & 0 & 1.5
+      \end{pmatrix}
+      \begin{pmatrix}
+        1\\0\\1\\1
+      \end{pmatrix}
+      = \begin{pmatrix}
+        f + 2\\1.5
+      \end{pmatrix}
+      = \begin{pmatrix}
+        3.5\\
+        1.5
+      \end{pmatrix}
+      $\\
+      $P_{M,2} = SM \cdot P_{proj} \cdot \vec{P}_2 = \begin{pmatrix}
+        2\\2.5
+      \end{pmatrix}$\\\vspace{0.2cm}
+      $P_{M,3} = SM \cdot P_{proj} \cdot \vec{P}_3 = \begin{pmatrix}
+        2.5\\2
+      \end{pmatrix}$
   \end{frame}
 
 \end{document}

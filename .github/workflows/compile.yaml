@@ -15,7 +15,7 @@ jobs:
         with:
           root_file: presentation.tex
       - run: |
-          sudo mv out/notes.pdf notes.pdf
+          sudo mv out/handout.pdf handout.pdf
           sudo mv out/presentation.pdf presentation.pdf
       - name: Upload LaTeX document
         uses: actions/upload-artifact@v3

@@ -2,7 +2,7 @@ on:
   push:
     # Sequence of patterns matched against refs/tags
     tags:
-    - 'v*' # Push events to matching 20*, i.e. 2022-05-26, ...
+    - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 
 name: Create Release
 jobs:
@@ -12,10 +12,14 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Compile LaTeX document
+      - name: Compile handout
         uses: xu-cheng/latex-action@v2
         with:
-          root_file: main.tex
+          root_file: handout.tex
+      - name: Compile presentation
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: presentation.tex
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -26,13 +30,21 @@ jobs:
           release_name: Release ${{ github.ref }}
           draft: false
           prerelease: false
-      - name: Upload Release Asset
-        id: upload-release-asset 
+      - name: Upload handout
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          asset_path: ./out/main.pdf
-          asset_name: main.pdf
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./out/handout.pdf
+          asset_name: handout.pdf
+          asset_content_type: application/pdf
+      - name: Upload presentation
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./out/presentation.pdf
+          asset_name: presentation.pdf
           asset_content_type: application/pdf

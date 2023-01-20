@@ -31,16 +31,17 @@
   \begin{frame}{Vektoren}
     \begin{minipage}{10cm}
       \begin{itemize}
-        \item Tuple von Elementen/Zahlen $\rightarrow$ Punkte im Raum koennen ueber Vektoren beschrieben werden
-        \item Vektor Koordinaten $v_x$ und $v_y$ (Kartesischem Koordinaten System = Achsen Senkrecht)\\\vspace{0.2cm} 
+        \item Liste von Elementen/Zahlen $\rightarrow$ Punkte im Raum können über Vektoren beschrieben werden (Ortsvektor)
+        \item Vektor Koordinaten $v_x$ und $v_y$ (Kartesisches Koordinatensystem = Achsen Senkrecht)\\\vspace{0.2cm} 
         \hspace{0.3cm}$\vec{v} = \begin{pmatrix} v_x\\ v_y\end{pmatrix}$
         \vspace{0.2cm}
-        \item Laenge (euklidische Norm) bsp. 2D, 3D\\
-        \hspace{0.3cm}$||\vec{v}|| =  \sqrt{v_x^2 + v_y^2}$\\
-        \hspace{0.3cm}$||\vec{v}|| =  \sqrt{v_x^2 + v_y^2 + v_z^2}$
+        \item Länge (euklidische Norm) bsp. 2D, 3D\\
+        \hspace{0.3cm}$\|\vec{v}\| =  \sqrt{v_x^2 + v_y^2}$\\
+        \hspace{0.3cm}$\|\vec{v}\| =  \sqrt{v_x^2 + v_y^2 + v_z^2}$
         \vspace{0.2cm}
         \item Richtung/Normierter Vektor\\
-        \hspace{0.25cm}\Large$\frac{\vec{v}}{||\vec{v}||}$
+        \hspace{0.25cm}\Large$\frac{\vec{v}}{\|\vec{v}\|}$\normalsize
+        \item Richtungsvektoren sind nicht unbedingt an Ursprung gesetzt
       \end{itemize}  
     \end{minipage}
     \begin{minipage}[c]{3cm}
@@ -58,7 +59,7 @@
   \subsection{Rechnen mit Vektoren}
   \begin{frame}{Rechnen mit Vektoren}
     \vspace{0.2cm}
-    \begin{minipage}{7cm}
+    \begin{minipage}{7.5cm}
       \textbf{Addition}
       \begin{itemize}
         \item Jeweils Summe der Koordinaten\\
@@ -77,7 +78,7 @@
         \draw[thick,->, red]   (0,0) -- node[above] {\hspace{1.4cm}\small$\vec{u} + \vec{v}$} (1.5,2);
       \end{tikzpicture}
     \end{minipage}
-    \begin{minipage}{6.5cm}
+    \begin{minipage}{6cm}
       \textbf{Subtraktion}
       \begin{itemize}
         \item Jeweils Differenz der Koordinaten\\
@@ -96,10 +97,10 @@
         \draw[thick,->, blue]   (0,0) -- node[above] {$\vec{v}$} (1.5,2);
       \end{tikzpicture}
     \end{minipage}
-    \textbf{Skalierung}
-    \begin{center}
-      $\lambda \vec{v} = \begin{pmatrix}\lambda v_x\\ \lambda v_y\end{pmatrix}$
-    \end{center}
+    \textbf{Skalierung}\\
+    \hspace{1cm}
+    $\lambda \vec{v} = \begin{pmatrix}\lambda v_x\\ \lambda v_y\end{pmatrix}$
+    
   \end{frame}
 
 
@@ -112,8 +113,8 @@
         $\vec{u}\cdot\vec{v} = u_xv_x + u_yv_y$; im 2D\\
         $\vec{u}\cdot\vec{v} = u_xv_x + u_yv_y + u_zv_z$; im 3D\\
         \item Winkel zwischen $\vec{u}$ und $\vec{v}$:\\
-        \hspace{0.7cm}$\vec{u} \cdot \vec{v} = \cos(\phi)||\vec{u}||||\vec{v}||$
-        \item Orthogonlaitaet genau dann wenn:
+        \hspace{0.7cm}$\vec{u} \cdot \vec{v} = \cos(\phi)\|\vec{u}\|\|\vec{v}\|$
+        \item Orthogonalität genau dann wenn:
         \hspace{0.7cm}$\vec{v} \perp \vec{u} \Leftrightarrow \vec{u} \cdot \vec{v} = 0$
         \item Orthogonale Vektoren zu $\vec{v}$:\\
         \vspace{0.1cm}\hspace{0.7cm}$\lambda \small\begin{pmatrix}v_y\\ -v_x\end{pmatrix}$, \small mit $\lambda \neq 0$
@@ -121,13 +122,13 @@
     \end{minipage}
     \begin{minipage}{4cm}
       \textbf{Interpretation}\\
-      \footnotesize Produkt Laenge $\vec{u}$ mit Laenge Projektion von $\vec{v}$ auf $\vec{u}$ (hier: $s$)\\
+      \footnotesize Produkt der Länge $\vec{v}$ mit Länge Projektion von $\vec{u}$ auf $\vec{v}$ (hier: $s$)\\
       \vspace{0.1cm}
       \begin{tikzpicture}
         \draw[thick,->] (0,0) -- (3.5,0) node[anchor=north west] {x};
         \draw[thick,->] (0,0) -- (0,2.5) node[anchor=south east] {y};
-        \draw[thick,->] (0.5,0.5) -- node[above] {$\vec{v}$} (2,2);
-        \draw[thick,->] (0.5, 0.5) -- node[above] {$\vec{u}$} (3,0.5);
+        \draw[thick,->] (0.5,0.5) -- node[above] {$\vec{u}$} (2,2);
+        \draw[thick,->] (0.5, 0.5) -- node[above] {$\vec{v}$} (3,0.5);
         \draw[thick,<->, blue] (0.5, 0.35) -- node[below] {$s$} (2,0.35);
         \draw[densely dotted]  (2,0.5) -- (2,2);
         
@@ -144,9 +145,9 @@
         \vspace{0.25cm}
         \item Eigenschaften:
         \begin{itemize}
-          \item $\vec{w} \perp \vec{u}$ \hspace{0.1cm}$\wedge$\hspace{0.1cm} $\vec{w} \perp \vec{v}$ ("Rechte Hand Regel")
-          \item $||\vec{w}|| = ||\vec{u}||||\vec{v}||\sin(\phi)$, mit $\phi$ Winkel zwischen $\vec{u}$ und $\vec{v}$\\
-          Entspricht der Flaeche, des von $\vec{u}$ und $\vec{v}$ aufgespannten Parallelogramms
+          \item $\vec{w} \perp \vec{u}$ \hspace{0.1cm}$\wedge$\hspace{0.1cm} $\vec{w} \perp \vec{v}$ (\textit{Rechte Hand Regel})
+          \item $\|\vec{w}\| = \|\vec{u}\|\vec{v}\|\sin(\phi)$, mit $\phi$ Winkel zwischen $\vec{u}$ und $\vec{v}$\\
+          Entspricht der Fläche, des von $\vec{u}$ und $\vec{v}$ aufgespannten Parallelogramms
         \end{itemize}
       \end{itemize}  
     \end{minipage}
@@ -167,33 +168,33 @@
   \end{frame}
 
   \section{Polygonale Netze}
-  \subsection{Vertex, Kante, Facette, Oberflaeche}
-  \begin{frame}{Vertex, Kante, Facette, Oberflaeche}
+  \subsection{Vertex, Kante, Facette, Oberfläche}
+  \begin{frame}{Vertex, Kante, Facette, Oberfläche}
     \hspace{0.65cm}\includegraphics[scale=0.5]{mesh}
     \begin{center}
       \footnotesize \url{https://commons.wikimedia.org/wiki/File:Mesh_overview.svg}  
     \end{center}
   \end{frame}
 
-  \subsection{Beispiel einer Oberflaeche}
-  \begin{frame}{Beispiel einer Oberflaeche}
+  \subsection{Beispiel einer Oberfläche}
+  \begin{frame}{Beispiel einer Oberfläche}
     \begin{center}
       \includegraphics[scale=0.125]{bunny}
     \end{center}
     \textbf{Fragestellung der Computergrafik:}\\
-    Abbildung der 3D Oberflaeche auf die 2D Bildebene der Kamera\\
+    Abbildung der 3D Oberfläche auf die 2D Bildebene der Kamera\\
     (Kameraperspektive, Schattierung, ... )
   \end{frame}
 
 
-  \subsection{Flaechennormale}
-  \begin{frame}{Flaechennormale}
+  \subsection{Flächennormale}
+  \begin{frame}{Flächennormale}
     \begin{minipage}{8cm}
       \normalsize
       \textbf{Der Normalenvektor zu einer Facette:}
       \begin{itemize}
-        \item Senkrecht zur Facette mit Laenge 1
-        \item Wichtig, z.B. fuer Schattierungsberechnung
+        \item Senkrecht zur Facette mit Länge 1
+        \item Wichtig, z.B. für Schattierungsberechnung
         \item Berechnung aus der Ortsvektoren, $\vec{a}, \vec{b}, \vec{c}$ der Vertices
         \item Kreuzprodukt der Richtungsvektoren $\vec{u}$ und $\vec{v}$
       \end{itemize}
@@ -293,7 +294,7 @@
     \end{center}
     \begin{itemize}
       \item Also Skalarprodukt aus Zeile $i$ der Matrix $A$ und Spalte $j$ der Matrix $B$
-      \item \textbf{Achtung:} nur definiert fuer Matrizen, wo $A$ so viele Spalten hat wie $B$ Zeilen
+      \item \textbf{Achtung:} nur definiert für Matrizen, wo $A$ so viele Spalten hat wie $B$ Zeilen
     \end{itemize}
     \begin{center}
       $\begin{pmatrix}
@@ -305,8 +306,8 @@
         1\\2\\3
       \end{pmatrix}
       = \begin{pmatrix}
-        1*1 + 2*2 + 3*3 \\
-        4*1 + 4*2 + 4*3
+        1\cdot1 + 2\cdot2 + 3\cdot3 \\
+        4\cdot1 + 5\cdot2 + 6\cdot3
       \end{pmatrix} =
       \begin{pmatrix}
         14\\24
@@ -315,15 +316,15 @@
     \end{center}
   \end{frame}
 
-  \subsection{Loesung des Gleichungssystems}
-  \begin{frame}{Loesung des Gleichungssystems}
+  \subsection{Lösung des Gleichungssystems}
+  \begin{frame}{Lösung des Gleichungssystems}
     \begin{center}
       $A \cdot \vec{x} = \vec{b} \rightarrow \vec{x} = A^{-1}\vec{b}$
     \end{center}
     \begin{itemize}
       \item \textbf{Was ist Inverse Matrix?}
-      \item Generell: Aufwand waechst mit 3ter Potenz der Dimension zur Berechnung der Inversen
-      \item Forme fuer 2D:\\
+      \item Generell: Aufwand wächst mit 3ter Potenz der Dimension zur Berechnung der Inversen
+      \item Forme für 2D:\\
       \begin{center}
         $M= \begin{pmatrix}
           a & b\\
@@ -381,7 +382,7 @@
 
   \subsection{Affine Transformation: Skalierung}
   \begin{frame}{Affine Transformation: Skalierung}
-    \textbf{Transformationsmatrix fuer Skalierung}
+    \textbf{Transformationsmatrix für Skalierung}
     \begin{center}
       $T = \begin{pmatrix}
         a & 0\\
@@ -413,7 +414,7 @@
   \subsection{Affine Transformation: Rotation}
   \begin{frame}{Affine Transformation: Rotation}
       \begin{minipage}{9cm}
-        \textbf{Transformationsmatrix fuer Rotation}
+        \textbf{Transformationsmatrix für Rotation}
         \begin{center}
           $R = \begin{pmatrix}
             \cos\phi & -\sin\phi\\
@@ -475,8 +476,8 @@
     $\vec{v}' = \vec{v} + \vec{t}$
     \begin{itemize}
       \item Anders als bei Skalierung/Rotation keine Transformationsmatrix
-      \item Keine Affine Transformation (Ursprung bleibt nicht unveraendert)
-      \item Transformation mit Trick moeglich: \textbf{Dimensionserhoehung} (w-Koordinate)
+      \item Keine Affine Transformation (Ursprung bleibt nicht unverändert)
+      \item Transformation mit Trick möglich: \textbf{Dimensionserhöhung} (w-Koordinate)
     \end{itemize}
     Vektoren: $\begin{pmatrix}
       x\\y
@@ -607,7 +608,7 @@
   \begin{frame}{Screen Mapping}
     \textbf{Screen Mapping Matrix mit 3 Funktionen}
     \begin{itemize}
-      \item Verschiebung des Bildes auf die Mitte der Anzeigegeraets
+      \item Verschiebung des Bildes auf die Mitte der Anzeigegeräts
       \item Skalierung entsprechender Brennweite $f$ der Kamera
       \item Reduzierung des 4D-homogonene Koordinaten auf 2D $\begin{pmatrix}
         x\\y
@@ -615,7 +616,7 @@
       $SM = \begin{pmatrix}
         f & 0 & 0 & \frac{1}{2}h\\
         0 & f & 0 & \frac{1}{2}b
-      \end{pmatrix}$ mit $h$ Hoehe und $b$ Breite des Ausgabegeraets
+      \end{pmatrix}$ mit $h$ Höhe und $b$ Breite des Ausgabegeräts
       \begin{center}        
         Bsp. Punkt $\vec{P}: \begin{pmatrix}
           1\\2\\1\\1
@@ -640,7 +641,7 @@
     \textbf{Aufgabenstellung:} Ausgabe der Sicht einer Kamera auf die Facette eines Objekts
     \begin{itemize}
       \item Facette aufgspannt im 3D-Raum durch Punkte: $P_1, P_2, P_3$
-      \item Ausgabe auf Monitor der Breite 4 und Hoehe 3
+      \item Ausgabe auf Monitor der Breite 4 und Höhe 3
       \item Bildebene $z_0 = 1$
       \item Kamera Sicht entlang der z-Achse mit Brennweite $f=1.5$
     \end{itemize}
@@ -697,6 +698,13 @@
       $P_{M,3} = SM \cdot P_{proj} \cdot \vec{P}_3 = \begin{pmatrix}
         2.5\\2
       \end{pmatrix}$
+  \end{frame}
+
+  \subsection{Danke für eure Aufmerksamkeit und habt ihr Fragen?}
+  \begin{frame}{Danke für eure Aufmerksamkeit und habt ihr Fragen?}
+    \begin{center}
+      \textbf{Vielen Dank für eure Aufmerksamkeit und habt ihr Fragen?}
+    \end{center}
   \end{frame}
 
 \end{document}

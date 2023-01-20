@@ -6,6 +6,10 @@
 \usepackage{fancyhdr} % For headers and footers
 \renewcommand{\footrulewidth}{0.4pt}% default is 0pt
 
+
+\usepackage{amsmath}
+\usepackage[german]{babel} % German
+
 \begin{document}
 
 % Header creation
@@ -19,6 +23,119 @@
 \fancyfoot[C]{\fontfamily{pcr}\selectfont\large\thepage}
 \fancyfoot[R]{\fontfamily{pcr}\selectfont\footnotesize.../\jobname.tex}
 
-\section*{Test}
+\subsection*{Vektoren}
+\subsubsection*{Euklidische Norm (2D, 3D)}
+\begin{center}
+        \hspace{0.3cm}$\|\vec{v}\| =  \sqrt{v_x^2 + v_y^2}$,
+        \hspace{0.3cm}$\|\vec{v}\| =  \sqrt{v_x^2 + v_y^2 + v_z^2}$
+        \vspace{0.2cm}	
+\end{center}
 
+\subsection*{Rechnen mit Vektoren}
+\subsubsection*{Addition, Subtraktion, Skalierung}
+\begin{center}
+	$\vec{u} + \vec{v} = \begin{pmatrix}u_x + v_x\\ u_y + v_y\end{pmatrix}$,
+$\vec{v} - \vec{u} = \begin{pmatrix}v_x - u_x\\ v_y - u_y\end{pmatrix}$,
+$\lambda \vec{v} = \begin{pmatrix}\lambda v_x\\ \lambda v_y\end{pmatrix}$\\	
+\end{center}
+\subsubsection*{Skalarprodukt}
+\begin{center}
+	$\vec{u}\cdot\vec{v} = u_xv_x + u_yv_y$, $\vec{u} \cdot \vec{v} = \cos(\phi)\|\vec{u}\|\|\vec{v}\|$ \vspace*{0.2cm}	
+\end{center}
+\subsubsection*{Kreuzprodukt}
+\begin{center}
+	$\vec{w} = \vec{u} \times \vec{v} = \begin{pmatrix}u_x\\ u_y\\u_z\end{pmatrix} \times \begin{pmatrix}v_x\\v_y\\v_z\end{pmatrix} = \begin{pmatrix}u_yv_z - u_zv_y\\u_zv_x - u_xv_z\\u_xv_y - u_yv_x\end{pmatrix}$\\
+\end{center}
+
+\subsection*{Matrizen}
+\subsubsection*{Multiplikation}
+\begin{center}
+	$C = A \cdot B$ \\
+	$C_{i,j} = A_{i,*} \cdot B_{*,j}$\\	
+\end{center}
+\subsubsection*{Inverse Matrix Formel für 2D}
+\begin{center}
+	$M= \begin{pmatrix}
+	  a & b\\
+	  c & d\\
+	\end{pmatrix}\hspace{0.2cm} \rightarrow \hspace{0.2cm}
+	M^{-1} = \frac{1}{ad - bc}
+	\begin{pmatrix}
+	  d & -b\\
+	  -c & a
+	\end{pmatrix}$
+  \end{center}
+\subsection*{Transformation}
+\subsubsection*{Skalierungs-, Rotationsmatrix}
+\begin{center}
+	$S = \begin{pmatrix}
+		a & 0\\
+		0 & b
+	\end{pmatrix}$,
+	$R = \begin{pmatrix}
+		\cos\phi & -\sin\phi\\
+		\sin\phi & \cos\phi
+	  \end{pmatrix}$
+\end{center}
+
+\subsubsection*{Homogone Verschiebungsmatrix}
+\begin{center}
+	$
+        \begin{pmatrix}
+          1 & 0 & t_x\\
+          0 & 1 & t_y\\
+          0 & 0 & 1
+        \end{pmatrix}
+        \cdot \begin{pmatrix}
+          x\\y\\1
+        \end{pmatrix}
+        = \begin{pmatrix}
+          x + t_x\\
+          y + t_y\\
+          1
+        \end{pmatrix}
+        $
+\end{center}
+\subsubsection*{Perspektivische Projektion}
+\begin{center}
+	$\begin{pmatrix}
+        x'\\
+        y'\\
+        z_0\\
+        1
+      \end{pmatrix}
+      =
+      \begin{pmatrix}
+        \frac{x\cdot z_0}{z}\\
+        \frac{y\cdot z_0}{z}\\
+        \frac{z\cdot z_0}{z}\\
+        \frac{z}{z}\\
+      \end{pmatrix}
+      =
+      \frac{1}{z}
+      \begin{pmatrix}
+        x\cdot z_0\\
+        y\cdot z_0\\
+        z\cdot z_0\\
+        z
+      \end{pmatrix}
+      = \frac{1}{z}
+      \begin{pmatrix}
+        z_0 & 0 & 0 & 0\\
+        0 & z_0 & 0 & 0\\
+        0 & 0 & z_0 & 0\\
+        0 & 0 & 1 & 0\\
+      \end{pmatrix}
+      \begin{pmatrix}
+        x\\y\\z\\1
+      \end{pmatrix}
+      $
+\end{center}
+\subsubsection*{Screen Mapping Matrix}
+\begin{center}
+	$SM = \begin{pmatrix}
+        f & 0 & 0 & \frac{1}{2}h\\
+        0 & f & 0 & \frac{1}{2}b
+      \end{pmatrix}$
+\end{center}
 \end{document}
